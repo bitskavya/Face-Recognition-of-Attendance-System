@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Attendance System — Home</title>
+  <style>
+    :root{
+      --bg1:#0f172a;
+      --bg2:#1e293b;
+      --accent1:#6366f1;
+      --accent2:#22d3ee;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"Segoe UI",sans-serif;
+      background:radial-gradient(1000px 600px at 20% -10%,rgba(99,102,241,.25),transparent 70%),
+                 radial-gradient(1000px 600px at 90% 20%,rgba(34,211,238,.25),transparent 70%),
+                 linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      min-height:100vh;
+      display:flex;flex-direction:column;
+    }
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 10%;position:sticky;top:0;z-index:10;
+      background:rgba(15,23,42,.6);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .logo{
+      font-weight:800;font-size:1.3rem;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    nav a{
+      margin-left:24px;text-decoration:none;color:var(--text);
+      font-weight:500;transition:.2s;
+    }
+    nav a:hover{color:var(--accent2);}
+    .hero{
+      flex:1;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;padding:60px 20px;
+    }
+    .hero h1{
+      font-size:2.6rem;line-height:1.3;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      margin-bottom:14px;
+    }
+    .hero p{
+      color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 30px;
+    }
+    .hero-actions{
+      display:flex;gap:18px;flex-wrap:wrap;justify-content:center;
+    }
+    .btn{
+      padding:14px 24px;border-radius:14px;font-weight:600;
+      border:none;cursor:pointer;transition:.25s;font-size:1rem;
+    }
+    .btn-login{
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      color:white;box-shadow:0 8px 22px rgba(99,102,241,.35);
+    }
+    .btn-login:hover{filter:brightness(1.1);}
+    .btn-register{
+      background:transparent;
+      border:2px solid var(--accent2);
+      color:var(--accent2);
+    }
+    .btn-register:hover{background:rgba(34,211,238,.15);}
+    .features{
+      padding:60px 10%;display:grid;gap:30px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:24px;text-align:center;
+      box-shadow:0 8px 22px rgba(0,0,0,.35);
+      transition:.3s;
+    }
+    .card:hover{transform:translateY(-6px);border-color:var(--accent2);}
+    .card h3{margin-bottom:10px;font-size:1.2rem;}
+    .card p{font-size:.95rem;color:var(--muted);}
+    footer{
+      text-align:center;padding:20px;color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    footer a{color:var(--accent2);text-decoration:none;}
+    /* Subtle animation */
+    @keyframes float {
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-8px);}
+    }
+    .card:nth-child(1){animation:float 6s ease-in-out infinite;}
+    .card:nth-child(2){animation:float 6s ease-in-out infinite 1s;}
+    .card:nth-child(3){animation:float 6s ease-in-out infinite 2s;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FaceAttend</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href=" reg.html ">Register</a>
+      <a href="features.html">Features</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Smart Face Attendance System</h1>
+    <p>
+      Experience seamless, contactless, and secure attendance marking with advanced facial recognition technology. 
+      Built for institutions and workplaces of the future.
+    </p>
+    <div class="hero-actions">
+      <a href="login.html"><button class="btn btn-login">Login</button></a>
+      <a href="reg.html"><button class="btn btn-register">Register</button></a>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="card">
+      <h3>🎥 Live Face Detection</h3>
+      <p>Instant face recognition ensures accurate attendance without manual intervention.</p>
+    </div>
+    <div class="card">
+      <h3>🔒 Secure & Encrypted</h3>
+      <p>Your biometric data is stored securely with strong encryption and privacy protection.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Smart Analytics</h3>
+      <p>Track attendance trends, generate reports, and access insights anytime.</p>
+    </div>
+  </section>
+
+
+</body>
+</html>
+

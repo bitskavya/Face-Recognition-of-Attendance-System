@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Face Attendance System - Features</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f111a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background-color: #1c1f2b;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #00c6ff;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #cccccc;
+      font-size: 1.1rem;
+    }
+
+    /* Features Column (Always One per Row) */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .feature-box {
+      background-color: #262b3a;
+      padding: 25px;
+      border-radius: 12px;
+      transition: background 0.3s;
+    }
+
+    .feature-box:hover {
+      background-color: #2f3546;
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #00c6ff;
+    }
+
+    .feature-desc {
+      font-size: 1rem;
+      color: #dddddd;
+      line-height: 1.5;
+    }
+
+    /* Footer and Button */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
+
+    .btn a {
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Face Attendance System</h1>
+      <p>Explore the powerful features designed to streamline your attendance process</p>
+    </div>
+
+    <!-- Features Column -->
+    <div class="features">
+
+      <!-- Feature 1 -->
+      <div class="feature-box">
+        <div class="feature-title">🧠 AI-Powered Face Recognition</div>
+        <div class="feature-desc">
+          Uses advanced AI models to detect and verify student faces within milliseconds. No physical touch or manual entry is needed — attendance is marked instantly.
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-box">
+        <div class="feature-title">🔐 Dual Login Options</div>
+        <div class="feature-desc">
+          Login securely using either Face ID or a password. The system supports biometric verification for both users and administrators, preventing proxy attendance.
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-box">
+        <div class="feature-title">📊 Real-Time Attendance Reports</div>
+        <div class="feature-desc">
+          View and export attendance data in real time. Generate daily, weekly, or monthly reports for students, classes, or departments — all accessible in seconds.
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-box">
+        <div class="feature-title">📅 Smart Scheduling</div>
+        <div class="feature-desc">
+          Automatically syncs with academic calendars and class schedules. Alerts and notifications ensure attendance is tracked even on rescheduled sessions or holidays.
+        </div>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="feature-box">
+        <div class="feature-title">💾 Encrypted Data Storage</div>
+        <div class="feature-desc">
+          All attendance and facial data are encrypted and securely stored. Only authorized users can access or manage the database, ensuring student privacy and safety.
+        </div>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="feature-box">
+        <div class="feature-title">📱 Multi-Platform Compatibility</div>
+        <div class="feature-desc">
+          Accessible from desktops, tablets, and mobile devices. Optimized for modern web browsers and supports both light and dark modes based on device settings.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer with Button -->
+    <div class="footer">
+      <button class="btn">
+        <a href="index.html">Go Back</a>
+      </button>
+    </div>
+  </div>
+</body>
+</html>

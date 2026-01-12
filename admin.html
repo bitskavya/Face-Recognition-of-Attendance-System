@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FaceAttend — Admin Dashboard</title>
+  <style>
+    :root {
+      --bg1:#0f172a;
+      --bg2:#1e293b;
+      --accent1:#22d3ee;
+      --accent2:#6366f1;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"Segoe UI",sans-serif;
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      min-height:100vh;display:flex;flex-direction:column;
+    }
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 10%;background:rgba(15,23,42,.8);backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .logo{
+      font-weight:800;font-size:1.3rem;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .user{font-size:.9rem;color:var(--muted);}
+    main{
+      flex:1;padding:50px 8%;
+      display:grid;gap:30px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    }
+    .tile{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:30px;text-align:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+      transition:.3s;cursor:pointer;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+    }
+    .tile:hover{
+      transform:translateY(-8px) scale(1.03);
+      border-color:var(--accent1);
+      box-shadow:0 12px 28px rgba(99,102,241,.25);
+    }
+    .icon{
+      width:70px;height:70px;border-radius:18px;
+      display:grid;place-items:center;
+      font-size:2rem;color:white;margin-bottom:16px;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      box-shadow:inset 0 0 12px rgba(255,255,255,.2);
+    }
+    .tile h3{margin-bottom:8px;font-size:1.2rem;color:#fff;}
+    .tile p{font-size:.9rem;color:#e2e8f0;}
+    footer{
+      text-align:center;padding:18px;color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:.85rem;
+    }
+    footer a{color:var(--accent1);text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">FaceAttend — Admin Panel</div>
+  <div class="user">Welcome, <strong>Admin</strong></div>
+</header>
+
+<main>
+  <a href="attendance_admin.php" class="tile">
+    <div class="icon">📑</div>
+    <h3>View Records</h3>
+    <p>Check attendance records of all users.</p>
+  </a>
+
+  <a href="reports.html" class="tile">
+    <div class="icon">📊</div>
+    <h3>Reports</h3>
+    <p>Generate daily, weekly, or monthly attendance summaries.</p>
+  </a>
+
+  <a href="manage_users.html" class="tile">
+    <div class="icon">👥</div>
+    <h3>Manage Users</h3>
+    <p>Add, edit, or remove users from the system.</p>
+  </a>
+
+  <a href="settings.html" class="tile">
+    <div class="icon">⚙️</div>
+    <h3>Settings</h3>
+    <p>Update your account or system configuration.</p>
+  </a>
+
+  <a href="help_support.html" class="tile">
+    <div class="icon">❓</div>
+    <h3>Help & Support</h3>
+    <p>Access documentation or reach out for help.</p>
+  </a>
+</main>
+
+<footer>
+  <p>© 2025 FaceAttend | Admin Control Panel — <a href="login.html">Logout</a></p>
+</footer>
+
+<script>
+  // Session timeout logic
+  function setCookie(name, value, minutes) {
+    let date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+    document.cookie = name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
+  }
+  function getCookie(name) {
+    let cname = name + "=";
+    let decoded = decodeURIComponent(document.cookie).split(';');
+    for(let c of decoded) {
+      while(c.charAt(0)==' ') c = c.substring(1);
+      if(c.indexOf(cname) == 0) return c.substring(cname.length,c.length);
+    }
+    return "";
+  }
+  if(getCookie("sessionActive") === "") {
+    setCookie("sessionActive", "true", 2); // 2 minutes
+  }
+  setInterval(function(){
+    if(getCookie("sessionActive") === "") {
+      alert("Session expired! Redirecting to login.");
+      window.location.href = "login.html";
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>

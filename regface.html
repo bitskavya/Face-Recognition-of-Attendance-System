@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Registration | Attendance System</title>
+  <style>
+    :root{
+      --bg1:#0f172a;
+      --bg2:#1e293b;
+      --accent1:#6366f1;
+      --accent2:#22d3ee;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"Segoe UI",sans-serif;
+      background:radial-gradient(1000px 600px at 20% -10%,rgba(99,102,241,.25),transparent 70%),
+                 radial-gradient(1000px 600px at 90% 20%,rgba(34,211,238,.25),transparent 70%),
+                 linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+    }
+    h2{
+      font-size:2.4rem;
+      margin-bottom:20px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    video{
+      border-radius:20px;
+      border:4px solid var(--accent1);
+      box-shadow:0 8px 25px rgba(0,0,0,.5);
+      width:640px;
+      height:480px;
+      margin-bottom:20px;
+    }
+    button{
+      padding:14px 32px;
+      border-radius:14px;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      font-size:1.1rem;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      color:white;
+      box-shadow:0 8px 22px rgba(99,102,241,.35);
+      transition:.3s;
+    }
+    button:hover{transform:scale(1.05);filter:brightness(1.1);}
+    footer{
+      margin-top:40px;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <h2>📸 Face Registration</h2>
+  <video id="camera" autoplay></video><br>
+  <button onclick="capture()">Register My Face</button>
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <footer>© 2025 Face Attendance | Registration Portal</footer>
+
+  <script>
+    const video = document.getElementById("camera");
+
+    // Access camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => { video.srcObject = stream; })
+      .catch(err => {
+        console.error("Camera not found:", err);
+        alert("Camera access failed. Please allow camera permissions.");
+      });
+
+    function capture() {
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Convert to Base64
+      const imageData = canvas.toDataURL("image/png");
+
+      // Send to PHP
+      fetch("upload2.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: imageData })
+      })
+      .then(res => res.text())
+      .then(data => alert(data))
+      .catch(err => console.error(err));
+    }
+  </script>
+</body>
+</html>

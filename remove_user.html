@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Remove User - Face Attendance System</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f111a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background-color: #1c1f2b;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .header {
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      color: #00c6ff;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 1rem;
+      color: #cccccc;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #cccccc;
+      margin-bottom: 6px;
+      text-align: left;
+      display: block;
+    }
+
+    input {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background-color: #2a2f3d;
+      color: #ffffff;
+      transition: border 0.2s ease;
+      width: 100%;
+    }
+
+    input:focus {
+      border: 1px solid #00c6ff;
+      outline: none;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
+
+    .footer {
+      margin-top: 30px;
+    }
+
+    .footer .btn {
+      width: auto;
+      padding: 10px 24px;
+      border-radius: 25px;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: white;
+    }
+
+    @media (max-width: 500px) {
+      .header h1 {
+        font-size: 1.6rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>Face Attendance System</h1>
+      <p>Admin Panel — Remove User</p>
+    </div>
+
+    <form id="removeUserForm" onsubmit="return handleRemoveUser()" action="remove_user.php" method="post">
+      <label for="userId">User ID or Email</label>
+      <input type="text" id="userId" name="userId" placeholder="Enter User ID or Email to remove" required />
+
+      <button type="submit" class="btn">Remove User</button>
+    </form>
+
+    <div class="footer">
+      <button class="btn">
+        <a href="manage_users.html">Go Back</a>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function handleRemoveUser() {
+      // Simulated admin check
+      const isAdmin = true; 
+      if (!isAdmin) {
+        alert("Only admins can remove users.");
+        return false;
+      }
+
+      // Simulate removal success
+      alert("User removed successfully (simulated).");
+      return true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add User - Face Attendance System</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f111a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background-color: #1c1f2b;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      color: #00c6ff;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 1rem;
+      color: #cccccc;
+    }
+
+    /* Form Section */
+    .form-title {
+      font-size: 1.3rem;
+      color: #00c6ff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #cccccc;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background-color: #2a2f3d;
+      color: #ffffff;
+      transition: border 0.2s ease;
+    }
+
+    input:focus,
+    select:focus {
+      border: 1px solid #00c6ff;
+      outline: none;
+    }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
+
+    .btn a {
+      text-decoration: none;
+      color: white;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 500px) {
+      .header h1 {
+        font-size: 1.6rem;
+      }
+
+      .form-title {
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Face Attendance System</h1>
+      <p>Admin Panel — Add New Users</p>
+    </div>
+
+    <!-- Add User Form -->
+    <div class="form-title">➕ Add User (Admin Only)</div>
+    <form id="addUserForm" onsubmit="return validateForm()" action="new_user.php" method="POST">
+
+      <!-- Full Name -->
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter full name" required />
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required />
+      </div>
+
+      <!-- Role -->
+      <div class="form-group">
+        <label for="role">Select Role</label>
+        <select id="role" name="role" required>
+          <option value="">-- Select role --</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Set Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required />
+      </div>
+
+      <!-- Submit -->
+      <button class="btn" type="submit">Add User</button>
+    </form>
+
+    <!-- Footer Button -->
+    <div class="footer">
+      <button class="btn">
+        <a href="manage_users.html">Go Back</a>
+      </button>
+    </div>
+  </div>
+
+  <!-- Basic Form Validation -->
+  <script>
+    function validateForm() {
+      const isAdmin = true; // Simulated check. Replace with real check on backend
+
+      if (!isAdmin) {
+        alert("Only admins are allowed to add users.");
+        return false;
+      }
+
+      alert("User successfully added (simulated).");
+      return true;
+    }
+  </script>
+</body>
+</html>

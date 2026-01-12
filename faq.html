@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 10px;
+    }
+
+    .faq-container {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .faq-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #ff7f7f;
+    }
+
+    .faq-subtitle {
+      text-align: center;
+      font-size: 15px;
+      color: #bdbde6;
+      margin-bottom: 25px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 18px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-size: 18px;
+      margin: 0;
+      color: #a2b6ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question::after {
+      content: "+";
+      font-size: 22px;
+      color: #ff7f7f;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      font-size: 15px;
+      color: #ddd;
+      margin-top: 10px;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="faq-container">
+    <h2 class="faq-title">Help & Support</h2>
+    <p class="faq-subtitle">Need assistance? Choose an option below.</p>
+
+    <div class="faq-item">
+      <p class="faq-question">What is this software?</p>
+      <div class="faq-answer">
+        This is a help and support interface designed to assist users.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">How do I contact support?</p>
+      <div class="faq-answer">
+        You can contact support through the 'Contact Support' option.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">Where can I find the user guide?</p>
+      <div class="faq-answer">
+        The user guide is available under the 'User Guide' section.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll(".faq-item");
+
+    items.forEach(item => {
+      item.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>

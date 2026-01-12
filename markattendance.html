@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Attendance System</title>
+  <style>
+    :root{
+      --bg1:#0f172a;
+      --bg2:#1e293b;
+      --accent1:#6366f1;
+      --accent2:#22d3ee;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"Segoe UI",sans-serif;
+      background:radial-gradient(1000px 600px at 20% -10%,rgba(99,102,241,.25),transparent 70%),
+                 radial-gradient(1000px 600px at 90% 20%,rgba(34,211,238,.25),transparent 70%),
+                 linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+    }
+    h2{
+      font-size:2.4rem;
+      margin-bottom:20px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    label{
+      font-size:1.2rem;
+      margin-bottom:10px;
+      display:block;
+    }
+    input{
+      padding:12px 18px;
+      border-radius:12px;
+      border:2px solid var(--accent2);
+      outline:none;
+      font-size:1.1rem;
+      margin-bottom:25px;
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      width:200px;
+      text-align:center;
+    }
+    input::placeholder{color:var(--muted);}
+    video{
+      border-radius:20px;
+      border:4px solid var(--accent1);
+      box-shadow:0 8px 25px rgba(0,0,0,.5);
+      width:640px;
+      height:480px;
+      margin-bottom:20px;
+    }
+    button{
+      padding:14px 32px;
+      border-radius:14px;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      font-size:1.1rem;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      color:white;
+      box-shadow:0 8px 22px rgba(99,102,241,.35);
+      transition:.3s;
+    }
+    button:hover{transform:scale(1.05);filter:brightness(1.1);}
+    footer{
+      margin-top:40px;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <h2>📸 Face Attendance System</h2>
+
+  <label>Enter Last 4 digits of Roll No:</label>
+  <input type="text" id="rollno" maxlength="4" placeholder="1234" required>
+
+  <video id="camera" autoplay></video><br>
+  <button onclick="capture()">Mark Attendance</button>
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <footer>© 2025 Face Attendance | Designed with ❤️ by You</footer>
+
+  <script>
+    const video = document.getElementById("camera");
+
+    // Access camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => { video.srcObject = stream; })
+      .catch(err => {
+        console.error("Camera not found:", err);
+        alert("Camera access failed. Please allow camera permissions.");
+      });
+
+    function capture() {
+      const rollno = document.getElementById("rollno").value.trim();
+
+      if (rollno === "" || rollno.length !== 4) {
+        alert("⚠️ Please enter last 4 digits of roll number.");
+        return;
+      }
+
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Convert to Base64
+      const imageData = canvas.toDataURL("image/png");
+
+      // Step 1: Upload image to upload.php
+      fetch("upload.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: imageData, rollno: rollno })
+      })
+      .then(res => res.text())
+      .then(data => {
+        console.log("Upload response:", data);
+
+        // Step 2: Call comp2.php for comparison
+        return fetch("comp2.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ rollno: rollno })
+        });
+      })
+      .then(res => res.text())
+      .then(compareResult => {
+        alert(compareResult); // show match / no match result
+        console.log("Comparison result:", compareResult);
+      })
+      .catch(err => console.error("Error:", err));
+    }
+  </script>
+</body>
+</html>

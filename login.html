@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Attendance — Login</title>
+  <style>
+    :root{
+      --bg: #0f172a;          
+      --card: #0b1024;        
+      --muted: #94a3b8;       
+      --text: #e5e7eb;        
+      --accent: #6366f1;      
+      --accent-2: #22d3ee;    
+      --ring: rgba(99,102,241,.4);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(2,6,23,.45);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family: system-ui, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,.12), transparent 60%),
+        radial-gradient(1000px 500px at 110% 10%, rgba(99,102,241,.14), transparent 60%),
+        linear-gradient(180deg, #0b122b, #0f172a 40%, #0a0f23);
+      height:100vh;display:flex;align-items:center;justify-content:center;
+      color:var(--text);
+    }
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+      border:1px solid rgba(148,163,184,.15);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      width:100%;max-width:420px;
+      padding:32px 28px;
+      backdrop-filter:blur(6px);
+    }
+    .logo{
+      width:52px;height:52px;
+      background:conic-gradient(from 210deg,var(--accent),var(--accent-2));
+      border-radius:14px;
+      display:grid;place-items:center;
+      font-weight:800;color:white;
+      font-size:1.2rem;
+      margin:0 auto 12px;
+      box-shadow:0 6px 16px rgba(99,102,241,.25),inset 0 0 12px rgba(255,255,255,.15);
+    }
+    h1{text-align:center;font-size:1.4rem;margin-bottom:4px;}
+    p.subtitle{text-align:center;color:var(--muted);margin-bottom:24px;font-size:.9rem;}
+    label{display:block;font-size:.9rem;color:#cbd5e1;margin-bottom:6px;}
+    .input{
+      width:100%;padding:12px 14px;margin-bottom:16px;
+      border:1px solid rgba(148,163,184,.25);
+      border-radius:12px;background:#0b1024;
+      color:var(--text);outline:none;
+      transition:border-color .2s, box-shadow .2s;
+    }
+    .input:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 4px var(--ring);
+    }
+    .btn{
+      width:100%;padding:12px 16px;
+      border:none;border-radius:12px;
+      font-weight:600;font-size:1rem;
+      cursor:pointer;transition:.2s;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:white;
+      box-shadow:0 8px 20px rgba(99,102,241,.35);
+    }
+    .btn-primary:hover{filter:brightness(1.1);}
+    .extra{
+      margin-top:18px;text-align:center;font-size:.85rem;
+    }
+    .extra a{color:#a5b4fc;text-decoration:none;}
+    .face-btn{
+      margin-top:12px;
+      width:100%;padding:11px 14px;
+      border:1px solid rgba(148,163,184,.3);
+      border-radius:12px;
+      background:rgba(148,163,184,.06);
+      color:var(--text);cursor:pointer;
+      font-weight:500;
+      transition:.2s;
+    }
+    .face-btn:hover{background:rgba(148,163,184,.12);}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">FA</div>
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Login to Face Attendance</p>
+    <form action="login.php" method="POST">
+      <label for="email">Email</label>
+      <input class="input" id="email" type="email" name="email" required placeholder="name@college.edu" />
+
+      <label for="password">Password</label>
+      <input class="input" id="password" type="password1" name="password1" required placeholder="••••••••" />
+
+      <button class="btn btn-primary" type="submit">Login</button>
+      <button type="submit" class="face-btn">🔵 Login with Face ID</button>
+    </form>
+    <div class="extra">
+      <p>Don’t have an account? <a href="reg.html">Register here</a></p>
+      <p><a href=" change_password.html">Forgot password?</a></p>
+    </div>
+  </div>
+</body>
+</html>
